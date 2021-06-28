@@ -1,4 +1,5 @@
-﻿using DesingPatterns.Factory_Method;
+﻿using DesingPatterns.Dependency_Injection;
+using DesingPatterns.Factory_Method;
 using System;
 
 namespace DesingPatterns
@@ -29,6 +30,16 @@ namespace DesingPatterns
 
             ISale sale2 = internetSaleFactory.GetSale();
             sale2.Sell(15);
+
+
+            // -------------------------------------
+
+            // Dependency Injection 
+            var cerveza = new Cerveza("Indio", "Heineken");
+            var bebidaConCerveza = new BebidaConCerveza(10, 2, cerveza);
+            bebidaConCerveza.Preparar();
+
+            // bebidaConCerveza depende de Cerveza, pero ya no tiene la responsabilidad de saber la construcción
         }
     }
 }
